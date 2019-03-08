@@ -1,0 +1,67 @@
+       ___         ___________
+      /   \       |   ________|
+     /  _  \      |  |
+    /  / \  \     |  |  
+   /  /___\  \    |  | 
+  /  _______  \   |  |
+ /  /       \  \  |  |________
+/__/         \__\ |___________|
+
+A Guide to the Armorcurriculum.com user API:
+
+	Basic Syntax:
+	armorcurriculum.com/api/api.php?key=<your_api_key>&action=<action>
+
+	<your_api_key> is required.  You can email me at armorcurriculum@gmail.com to get a key.
+
+	<action> = one of the following:
+		* create_user - params: password, email, content (optional).
+			* Action: Creates a new user.
+			* Return value: none.
+
+		* validate_user - params: password, email.
+			* Action: Checks if the the sent credintials match.
+			* Return value: JSON array containg one value, a boolean.
+
+		* get_user_info - params: username, password.
+			* Action: Gets the user's information object -> user_info branch (see information object below).
+			* Return value: JSON object.
+		
+		* set_user_info = params: username, password, content.
+			* Action: Sets the user_info branch.
+			* Return value: none.
+
+		* sub_content - params: content, branch_name***, username, password.
+			* Action: Replace the existing information object -> user_info branch with the one sent up in the content paramater.
+			* Return value: JSON object.
+            *** If the branch does not exixt, it will be created.
+
+		* get_content - params: branch_name, username, password.
+			* Action: Replace the existing content of the branch listed in the information object with the values sent up in the content paramater.
+			* Return value: none.
+
+	Params:
+		All params besides the two in the url above must be sent as post headers.
+
+	Information Object:
+		Here is a sample:
+			{
+				default_values: {
+					username: "BobJacker" //Optional
+					name: "Bob", //Optional
+					age: "34" //Optional
+				},
+				//Additional branches can be added: Example:
+				done_to_do_list: {
+					//Information in that branch.
+				}
+			}
+
+		The manager by armorcurriculum.com has it's own branch, the to do list it's own, and so on.
+
+	Errors:
+		If there is an error in the params, or for some reason the server cannot conplete the given task, it will return a JSON object similar to this:
+		'{"error":true,"message":"This is what happened...","code":"<error_code>"}'
+
+        <error_code> will be one of the following:
+            * INVALID_BRANCH : This is returned on the "get_content" action, where the branch that you are trying to get from does not exist.

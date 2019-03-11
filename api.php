@@ -29,7 +29,7 @@ $response;
 $sv = "localhost";
 $us = "root";
 $ps = "root";
-$db = "jikno-backend-api";
+$db = "jikno_backend_api";
 $conn = new mysqli($sv, $us, $ps, $db);
 
 // Check connection

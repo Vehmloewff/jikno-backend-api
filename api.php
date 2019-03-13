@@ -1,6 +1,6 @@
 <?php
 //Check for valid access
-include 'keys.php';
+require 'keys.php';
 $key = $_GET['key'];
 $validRequest = false;
 $arrlength = count($validApiKeys);
@@ -26,10 +26,7 @@ $branch_name = $_POST['branch_name'];
 $response;
 
 // Create connection
-$sv = "localhost";
-$us = "root";
-$ps = "root";
-$db = "jikno_backend_api";
+require 'connection-details.php';
 $conn = new mysqli($sv, $us, $ps, $db);
 
 // Check connection

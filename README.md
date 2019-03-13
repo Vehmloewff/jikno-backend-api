@@ -41,6 +41,8 @@ Now, create a file called `index.html`.  Populate it with something like this:
 
 When you run this page it will create a new row in `members`.
 
+Note: I use [sequelpro](https://github.com/sequelpro/sequelpro) to manage and view the sql tables on my machine.
+
 Rember: When you update a param, action, or response in the api, you must update `guide.txt`.
 
 # License

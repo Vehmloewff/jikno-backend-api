@@ -42,6 +42,9 @@ A Guide to the Jikno.com user API:
 			* Action: Replace the existing content of the branch listed in the information object with the values sent up in the content paramater.
 			* Return value: none.
 
+        * email_user - params: email, content.
+            * Action: Emails the email address listed in the email param with the content in the content param.  Email is sent from jiknobot@jikno.com.
+
 	Params:
 		All params besides the two in the url above must be sent as post headers.
 

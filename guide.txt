@@ -36,7 +36,7 @@ A Guide to the Jikno.com user API:
 		* sub_content - params: content, branch_name***, username, password.
 			* Action: Replace the existing information object -> user_info branch with the one sent up in the content paramater.
 			* Return value: JSON object.
-            *** If the branch does not exixt, it will be created.
+            		*** If the branch does not exixt, it will be created.
 
 		* get_content - params: branch_name, username, password.
 			* Action: Replace the existing content of the branch listed in the information object with the values sent up in the content paramater.

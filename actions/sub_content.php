@@ -19,19 +19,13 @@ if ($email && $password && $content && $branch_name) {
         $sql = "UPDATE members SET content='" . mysqli_real_escape_string($conn, $contentWithMain) . "' WHERE email='" . mysqli_real_escape_string($conn, $email) . "' AND userPassword='" . mysqli_real_escape_string($conn, $password) . "';";
 
         if ($conn->query($sql) === true) {
-            $response = array(true);
+            responseBuilder(false, "The server has updated the ".$branch_name." branch with success.", "OK");
         } else {
-            $obj->error = true;
-            $obj->message = "Error updating record: " . $conn->error;
-            $response = $obj;
+            responseBuilder(true, "Error updating record: " . $conn->error, "FAILED");
         }
     } else {
-        $obj->error = true;
-        $obj->message = "The password/email is not valid";
-        $response = $obj;
+        responseBuilder(true, "The password/email is not valid", "INVALID_USER");
     }
 } else {
-    $obj->error = true;
-    $obj->message = "Invalid params";
-    $response = $obj;
+    responseBuilder(true, "Invalid params", "INVALID_PARAMS");
 }

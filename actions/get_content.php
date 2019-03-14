@@ -9,22 +9,16 @@ if ($password && $email && $branch_name) {
             $obj = json_decode($obj);
             foreach ($obj as $key => $val) {
                 if ($key == $branch_name) {
-                    $response = $val;
+                    responseBuilder(false, $val, "OK");
                 }
             }
             if (!$response) {
-                $response->error = true;
-                $response->code = "INVALID_BRANCH";
-                $response->message = "The branch you requested does not exist.";
+                responseBuilder(true, "The branch you requested does not exist.", "INVALID_BRANCH");
             }
         }
     } else {
-        $obj->error = true;
-        $obj->message = "The password/email is not valid";
-        $response = $obj;
+        responseBuilder(true, "The password/email is not valid", "INVALID_USER");
     }
 } else {
-    $obj->error = true;
-    $obj->message = "Invalid params";
-    $response = $obj;
+    responseBuilder(true, "Invalid params", "INVALID_PARAMS");
 }

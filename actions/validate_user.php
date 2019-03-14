@@ -1,12 +1,10 @@
 <?php
 if ($email && $password) {
     if (validateUser($conn, $email, $password) == true) {
-        $response = array(true);
+        responseBuilder(false, "Valid user.", "OK");
     } else {
-        $response = array(false);
+        responseBuilder(true, "Invalid user!", "INVALID_USER");
     }
 } else {
-    $obj->error = true;
-    $obj->message = "Invalid params";
-    $response = $obj;
+    responseBuilder(true, "Invalid params!", "INVALID_PARAMS");
 }

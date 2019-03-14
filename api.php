@@ -23,7 +23,9 @@ $email = $_POST["email"];
 $content = $_POST['content'];
 $branch_name = $_POST['branch_name'];
 
-$response;
+$subject = $_POST["subject"];
+
+$response = false;
 
 // Create connection
 require 'connection-details.php';
@@ -66,6 +68,10 @@ else if ($action == "get_content") {
     include 'actions/get_content.php';
 }
 
+else if ($action == "email_user") {
+    include 'actions/email_user.php';
+}
+
 // Catch the error
 else {
     $obj->error = true;
@@ -95,6 +101,7 @@ function validateUser($conn, $email, $password)
 
 // Throw a JSON error if for some reason we are not outputing JSON
 if (!$response) {
+    $obj = new StdClass;
     $obj->error = true;
     $obj->message = "Internal error!";
     $response = $obj;

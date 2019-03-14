@@ -1,5 +1,11 @@
 <?php
 if ($email && $password) {
+    require 'constants/app-icons-path.php';
+
+    $sql = "SELECT email FROM members";
+    $result = $conn->query($sql);
+    $number_of_users = $result->num_rows;
+
     $sql = "SELECT content FROM apps_details";
     $result = $conn->query($sql);
 
@@ -9,7 +15,6 @@ if ($email && $password) {
         }
 
 
-        $obj = new StdClass;
         foreach ($apps as $branch => $branch_data) {
             $used_app = false;
             foreach($branch_data->users as $user) {
@@ -18,9 +23,15 @@ if ($email && $password) {
                 }
             }
 
+            $obj[$branch]->name = $branch_data->name;
+            $obj[$branch]->icon = $path.$branch.$default_extension;
             if ($used_app) {
-                $obj[$branch] = $branch_data;
+                $obj[$branch]->active_by_user = true;
+            }else{
+                $obj[$branch]->active_by_user = false;
             }
+            $obj[$branch]->description = $branch_data->description;
+            $obj[$branch]->popularity = count($branch_data->users) / $number_of_users;
         }
 
         responseBuilder(false, $obj, "OK");

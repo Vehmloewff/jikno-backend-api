@@ -1,6 +1,6 @@
 <?php
 if ($email && $password) {
-    $sql = "SELECT content FROM app_details";
+    $sql = "SELECT content FROM apps_details";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {

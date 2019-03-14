@@ -1,18 +1,20 @@
-       ___         ___________
-      /   \       |   ________|
-     /  _  \      |  |
-    /  / \  \     |  |  
-   /  /___\  \    |  | 
-  /  _______  \   |  |
- /  /       \  \  |  |________
-/__/         \__\ |___________|
+     ________________                 ________
+     |______   _____|                /  ____  \
+            |  |                    /  /    \  \
+            |  |                   /  /      \  \ 
+            |  |                  /  /        \  \        ______    _________
+            |  |                 /  /__________\  \       |     |       |
+    ____    |  |                /  _____________   \      |_____/       |
+    |  |    |  |               /  /              \  \     |             |
+    |  |____/  /   ___        /  /                \  \    |             |
+    |_________/   |___|      /  /                  \  \   |        _____|_____
 
-A Guide to the Armorcurriculum.com user API:
+A Guide to the Jikno.com user API:
 
 	Basic Syntax:
-	armorcurriculum.com/api/api.php?key=<your_api_key>&action=<action>
+	https://www.jikno.com/api/api.php?key=<your_api_key>&action=<action>
 
-	<your_api_key> is required.  You can email me at armorcurriculum@gmail.com to get a key.
+	<your_api_key> is required.  You can email me at jikno@gmail.com to get a key.
 
 	<action> = one of the following:
 		* create_user - params: password, email, content (optional).
@@ -57,7 +59,7 @@ A Guide to the Armorcurriculum.com user API:
 				}
 			}
 
-		The manager by armorcurriculum.com has it's own branch, the to do list it's own, and so on.
+		The manager at manager.jikno.com has it's own branch, the to do list it's own, and so on.
 
 	Errors:
 		If there is an error in the params, or for some reason the server cannot conplete the given task, it will return a JSON object similar to this:

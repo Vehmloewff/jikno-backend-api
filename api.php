@@ -10,8 +10,7 @@ for ($i = 0; $i < $arrlength; $i++) {
     }
 }
 if (!$validRequest) {
-    $obj[0] = false;
-    die(json_encode($obj));
+    responseBuilder(true, "Invalid key!  You do not have permission to access these users.", "FAILED");
 }
 
 $action = $_GET["action"];
@@ -31,9 +30,7 @@ $conn = new mysqli($sv, $us, $ps, $db);
 
 // Check connection
 if ($conn->connect_error) {
-    $obj->error = true;
-    $obj->message = "Connection failed: " . $conn->connect_error;
-    die(json_encode($obj));
+    responseBuilder(true, "Connection failed: " . $conn->connect_error, "FAILED");
 }
 
 //Create user

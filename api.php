@@ -10,7 +10,7 @@ for ($i = 0; $i < $arrlength; $i++) {
     }
 }
 if (!$validRequest) {
-    responseBuilder(true, "Invalid key!  You do not have permission to access these users.", "FAILED");
+    responseBuilder('die', "Invalid key!  You do not have permission to access these users.", "FAILED");
 }
 
 $action = $_GET["action"];
@@ -32,7 +32,7 @@ $conn = new mysqli($sv, $us, $ps, $db);
 
 // Check connection
 if ($conn->connect_error) {
-    responseBuilder(true, "Connection failed: " . $conn->connect_error, "FAILED");
+    responseBuilder('die', "Connection failed: " . $conn->connect_error, "FAILED");
 }
 
 //Create user
@@ -98,10 +98,18 @@ function validateUser($conn, $email, $password)
 
 function responseBuilder($error, $data, $code) {
     global $response;
-	$response = new StdClass;
-	$response->error = $error;
-	$response->data = $data;
-    $response->code = $code;
+    if ($error === "die") {
+        $response = new StdClass;
+	    $response->error = true;
+	    $response->data = $data;
+        $response->code = $code;
+        die(json_encode($response));
+    }else{
+        $response = new StdClass;
+	    $response->error = $error;
+	    $response->data = $data;
+        $response->code = $code;
+    }
 }
 
 // Throw a JSON error if for some reason we are not outputing JSON

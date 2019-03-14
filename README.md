@@ -15,7 +15,6 @@ CREATE TABLE members (
     content longtext
 );
 CREATE TABLE apps_details (
-    branch_name VARCHAR(100),
     content LONGTEXT 
 );
 ```

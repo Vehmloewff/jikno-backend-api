@@ -7,15 +7,11 @@ if ($password && $email) {
 		while ($row = $result->fetch_assoc()) {
 			$obj = $row["content"];
 			$obj = json_decode($obj);
-			$response = $obj->user_info;
+            responseBuilder(false, $obj->user_info, "OK");
 		}
 	} else {
-		$obj->error = true;
-		$obj->message = "The password/email is not valid";
-		$response = $obj;
+		responseBuilder(true, "The password/email is not valid", "INVALID_USER");
 	}
 } else {
-	$obj->error = true;
-	$obj->message = "Invalid params";
-	$response = $obj;
+	responseBuilder(true, "Invalid params", "INVALID_PARAMS");
 }

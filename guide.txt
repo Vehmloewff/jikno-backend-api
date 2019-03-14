@@ -71,4 +71,4 @@ A Guide to the Jikno.com user API:
 			* OK : This code is returned when everything is fine.
             * INVALID_PARAMS : This is returned anytime the params are not valid.
             * FAILED : This code is returned when an unknown error occurs on any action.  See the data tree of the response fro more info.
-            * INVALID_USER : This is returned on the "validate_user" and "set_user_info" actions when the requested username and password do not match.
+            * INVALID_USER : This is returned anytime (except on the "create_user" action) when the username and password do not match.

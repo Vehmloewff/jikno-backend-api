@@ -115,7 +115,6 @@ function responseBuilder($error, $data, $code) {
 // Throw a JSON error if for some reason we are not outputing JSON
 if (!$response) {
     responseBuilder(true, "Internal error!", "FAILED");
-
 }
 
 echo json_encode($response);

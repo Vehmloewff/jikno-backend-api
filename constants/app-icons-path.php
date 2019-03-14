@@ -1,3 +1,3 @@
 <?php
 $path = "/cloud/app-icons/";
-$defaultExtension = ".svg";
+$default_extension = ".svg";

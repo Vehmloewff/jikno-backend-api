@@ -1,6 +1,6 @@
 <?php
 //Check for valid access
-require 'keys.php';
+require 'constants/keys.php';
 $key = $_GET['key'];
 $validRequest = false;
 $arrlength = count($validApiKeys);
@@ -27,7 +27,7 @@ $subject = $_POST["subject"];
 $response = false;
 
 // Create connection
-require 'connection-details.php';
+require 'constants/connection-details.php';
 $conn = new mysqli($sv, $us, $ps, $db);
 
 // Check connection

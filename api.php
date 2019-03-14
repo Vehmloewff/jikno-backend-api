@@ -92,6 +92,12 @@ function validateUser($conn, $email, $password)
         return false;
     }
 }
+function responseBuilder($error, $data, $code) {
+	$response = new StdClass;
+	$response->error = $error;
+	$response->data = $data;
+	$response->code = $code;
+}
 
 // Throw a JSON error if for some reason we are not outputing JSON
 if (!$response) {

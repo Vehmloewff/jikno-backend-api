@@ -69,6 +69,10 @@ else if ($action == "email_user") {
     include 'actions/email_user.php';
 }
 
+else if ($action == "get_apps") {
+    include 'actions/get_apps.php';
+}
+
 // Catch the error
 else {
     $obj->error = true;

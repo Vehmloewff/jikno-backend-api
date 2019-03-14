@@ -92,18 +92,18 @@ function validateUser($conn, $email, $password)
         return false;
     }
 }
+
 function responseBuilder($error, $data, $code) {
+    global $response;
 	$response = new StdClass;
 	$response->error = $error;
 	$response->data = $data;
-	$response->code = $code;
+    $response->code = $code;
 }
 
 // Throw a JSON error if for some reason we are not outputing JSON
 if (!$response) {
-    $obj->error = true;
-    $obj->message = "Internal error!";
-    $response = $obj;
+    responseBuilder(true, "Internal error!", "FAILED");
 }
 
 echo json_encode($response);

@@ -2,11 +2,35 @@
     "example_app": {
         "name": "Example App",
         "description": "This app is an example app.",
-        "users": [ ]
+        "users": [ ],
+        "skeleton": {
+            "fyi": "Whatever is in 'skeleton' will be inserted into the requested branch when it does not exist.",
+            "example_arr": [
+                "examples",
+                "are",
+                "usefull"
+            ],
+            "app_settings": {
+                "example_mode": true
+            }
+        }
     },
     "fake_software": {
         "name": "Fake Software",
         "description": "This is a fake app.  If it were real, it would be on the 'real' database.",
-        "users": [ ]
+        "users": [ ],
+        "skeleton": {
+            "example_arr": [
+                "fake",
+                "apps",
+                "are",
+                "100%",
+                "pointless"
+            ],
+            "app_settings": {
+                "example_mode": false,
+                "isFake": true
+            }
+        }
     }
 }

@@ -7,16 +7,10 @@ if ($email && $content && $subject) {
 
     // send email
     if (mail($email, $subject, $content, $headers)) {
-        $obj->error = false;
-        $obj->message = "Emailed ".$email." with success.";
-        $response = $obj;
+        responseBuilder(true, "Emailed ".$email." with success.", "OK");
     }else{
-        $obj->error = true;
-        $obj->message = "Failed to email ".$email;
-        $response = $obj;
+        responseBuilder(true, "Failed to email ".$email, "FAILED");
     }
 } else {
-    $obj->error = true;
-    $obj->message = "Invalid Params!";
-    $response = $obj;
+    responseBuilder(true, "Invalid params!", "INVALID_PARAMS");
 }

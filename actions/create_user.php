@@ -2,33 +2,25 @@
 if ($password && $email) {
     if (!$content) {
         $content["user_info"] = new StdClass;
+        $content = json_encode($content);
     }
-    $content = json_encode($content);
 
     $sql = "SELECT email FROM members WHERE email='" . mysqli_real_escape_string($conn, $email) . "'";
     $result = $conn->query($sql);
 
     if ($result->num_rows !== 0) {
-        $obj->error = true;
-        $obj->message = "This account already exists";
-        $response = $obj;
+        responseBuilder(true, "This account already exists!", "ACCOUNT_EXISTS");
     } else {
         $sql = "INSERT INTO members (email, userPassword, content)
-    		VALUES ('" . mysqli_real_escape_string($conn, $email) . "', '" . mysqli_real_escape_string($conn, $password) . "', '" . mysqli_real_escape_string($conn, $content) . "')";
+			VALUES ('" . mysqli_real_escape_string($conn, $email) . "', '" . mysqli_real_escape_string($conn, $password) . "', '" . mysqli_real_escape_string($conn, $content) . "')";
 
         if ($conn->query($sql) === true) {
-            $obj = array(true);
-            $response = $Obj;
+            responseBuilder(false, "Created account successfully", "OK");
         } else {
-            $obj->error = true;
-            $obj->message = "Error: " . $conn->error;
-            $response = $obj;
+            responseBuilder(true, "Error: ".$conn->error, "FAILED");
         }
     }
 
 } else {
-    $obj->error = true;
-    $obj->message = "Params are not valid";
-    $response = $obj;
+    responseBuilder(true, "Invalid params", "INVALID_PARAMS");
 }
-?>

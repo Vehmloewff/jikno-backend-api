@@ -19,7 +19,7 @@ A Guide to the Jikno.com user API:
 	<action> = one of the following:
 		* create_user - params: password, email, content (optional).
 			* Action: Creates a new user.
-			* Return value: none.
+			* Return type: string.
 
 		* validate_user - params: password, email.
 			* Action: Checks if the the sent credintials match.
@@ -67,3 +67,7 @@ A Guide to the Jikno.com user API:
 
         <error_code> will be one of the following:
             * INVALID_BRANCH : This is returned on the "get_content" action, where the branch that you are trying to get from does not exist.
+			* ACCOUNT_EXISTS : This is returned on the "create_user" action, when the user that is being created already exists.
+			* OK : This code is returned on the "create_user" branch when everything is fine.
+            * INVALID_PARAMS : This is returned on the "create_user_branch" when the params are not valid.
+            * FAILED : This code is returned when an unknown error occurs on any action.  See the data tree of the response fro more info.

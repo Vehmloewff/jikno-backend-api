@@ -38,188 +38,32 @@ if ($conn->connect_error) {
 
 //Create user
 if ($action == "create_user") {
-    if ($password && $email) {
-        if (!$content) {
-            $content["user_info"] = new StdClass;
-        }
-        $content = json_encode($content);
-
-        $sql = "SELECT email FROM members WHERE email='" . mysqli_real_escape_string($conn, $email) . "'";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows !== 0) {
-            $obj->error = true;
-            $obj->message = "This account already exists";
-            $response = $obj;
-        } else {
-            $sql = "INSERT INTO members (email, userPassword, content)
-    		VALUES ('" . mysqli_real_escape_string($conn, $email) . "', '" . mysqli_real_escape_string($conn, $password) . "', '" . mysqli_real_escape_string($conn, $content) . "')";
-
-            if ($conn->query($sql) === true) {
-                $obj = array(true);
-                $response = $Obj;
-            } else {
-                $obj->error = true;
-                $obj->message = "Error: " . $conn->error;
-                $response = $obj;
-            }
-        }
-
-    } else {
-        $obj->error = true;
-        $obj->message = "Params are not valid";
-        $response = $obj;
-    }
+    include 'actions/create_user.php';
 }
 
 // Validate User
 else if ($action == "validate_user") {
-    if ($email && $password) {
-        if (validateUser($conn, $email, $password) == true) {
-            $response = array(true);
-        } else {
-            $response = array(false);
-        }
-    } else {
-        $obj->error = true;
-        $obj->message = "Invalid params";
-        $response = $obj;
-    }
+    include 'actions/validate_user.php';
 }
 
 // Get user info
 else if ($action == "get_user_info") {
-    if ($password && $email) {
-        $sql = "SELECT content FROM members WHERE email='" . mysqli_real_escape_string($conn, $email) . "' AND userPassword='" . mysqli_real_escape_string($conn, $password) . "';";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows == 1) {
-            while ($row = $result->fetch_assoc()) {
-                $obj = $row["content"];
-                $obj = json_decode($obj);
-                $response = $obj->user_info;
-            }
-        } else {
-            $obj->error = true;
-            $obj->message = "The password/email is not valid";
-            $response = $obj;
-        }
-    } else {
-        $obj->error = true;
-        $obj->message = "Invalid params";
-        $response = $obj;
-    }
+    include 'actions/get_user_info.php';
 }
 
 //Set user info
 else if ($action == "set_user_info") {
-    if ($email && $password && $content) {
-
-        //First, get the content
-        $sql = "SELECT content FROM members WHERE email='" . mysqli_real_escape_string($conn, $email) . "' AND userPassword='" . mysqli_real_escape_string($conn, $password) . "';";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows == 1) {
-            while ($row = $result->fetch_assoc()) {
-                $obj = $row["content"];
-                $obj = json_decode($obj);
-                $obj->user_info = json_decode($content);
-                $contentWithMain = json_encode($obj);
-            }
-
-            // Then update the user_info branch
-            $sql = "UPDATE members SET content='" . mysqli_real_escape_string($conn, $contentWithMain) . "' WHERE email='" . mysqli_real_escape_string($conn, $email) . "' AND userPassword='" . mysqli_real_escape_string($conn, $password) . "';";
-
-            if ($conn->query($sql) === true) {
-                $response = array(true);
-            } else {
-                $obj->error = true;
-                $obj->message = "Error updating record: " . $conn->error;
-                $response = $obj;
-            }
-        } else {
-            $obj->error = true;
-            $obj->message = "The password/email is not valid";
-            $response = $obj;
-        }
-    } else {
-        $obj->error = true;
-        $obj->message = "Invalid params";
-        $response = $obj;
-    }
+    include 'actions/set_user_info.php';
 }
 
 //Sub_content
 else if ($action == "sub_content") {
-    if ($email && $password && $content && $branch_name) {
-
-        //First, get the content
-        $sql = "SELECT content FROM members WHERE email='" . mysqli_real_escape_string($conn, $email) . "' AND userPassword='" . mysqli_real_escape_string($conn, $password) . "';";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows == 1) {
-            while ($row = $result->fetch_assoc()) {
-				$info = json_decode($row["content"]);
-				foreach ($info as $x => $val) {
-					$obj[$x] = $val;
-				}
-                $obj[$branch_name] = json_decode($content);
-                $contentWithMain = json_encode($obj);
-			}
-
-            // Then update the user_info branch
-            $sql = "UPDATE members SET content='" . mysqli_real_escape_string($conn, $contentWithMain) . "' WHERE email='" . mysqli_real_escape_string($conn, $email) . "' AND userPassword='" . mysqli_real_escape_string($conn, $password) . "';";
-
-            if ($conn->query($sql) === true) {
-                $response = array(true);
-            } else {
-                $obj->error = true;
-                $obj->message = "Error updating record: " . $conn->error;
-                $response = $obj;
-            }
-        } else {
-            $obj->error = true;
-            $obj->message = "The password/email is not valid";
-            $response = $obj;
-        }
-    } else {
-        $obj->error = true;
-        $obj->message = "Invalid params";
-        $response = $obj;
-    }
+    include 'actions/sub_content.php';
 }
 
 // Get content
 else if ($action == "get_content") {
-    if ($password && $email && $branch_name) {
-        $sql = "SELECT content FROM members WHERE email='" . mysqli_real_escape_string($conn, $email) . "' AND userPassword='" . mysqli_real_escape_string($conn, $password) . "';";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows == 1) {
-            while ($row = $result->fetch_assoc()) {
-                $obj = $row["content"];
-				$obj = json_decode($obj);
-				foreach ($obj as $key => $val){
-					if ($key == $branch_name) {
-						$response = $val;
-					}
-				}
-                if (!$response) {
-					$response -> error = true;
-                    $response -> code = "INVALID_BRANCH";
-					$response -> message = "The branch you requested does not exist.";
-				}
-            }
-        } else {
-            $obj->error = true;
-            $obj->message = "The password/email is not valid";
-            $response = $obj;
-        }
-    } else {
-        $obj->error = true;
-        $obj->message = "Invalid params";
-        $response = $obj;
-    }
+    include 'actions/get_content.php';
 }
 
 // Catch the error

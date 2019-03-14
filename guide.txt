@@ -59,7 +59,7 @@ A Guide to the Jikno.com user API:
 				}
 			}
 
-		The manager by curriculum.jikno.com has it's own branch, the to do list it's own, and so on.
+		The manager at manager.jikno.com has it's own branch, the to do list it's own, and so on.
 
 	Errors:
 		If there is an error in the params, or for some reason the server cannot conplete the given task, it will return a JSON object similar to this:

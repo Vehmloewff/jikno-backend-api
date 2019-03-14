@@ -12,7 +12,7 @@
 A Guide to the Jikno.com user API:
 
 	Basic Syntax:
-	jikno.com/api/api.php?key=<your_api_key>&action=<action>
+	https://www.jikno.com/api/api.php?key=<your_api_key>&action=<action>
 
 	<your_api_key> is required.  You can email me at jikno@gmail.com to get a key.
 

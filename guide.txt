@@ -68,7 +68,7 @@ A Guide to the Jikno.com user API:
         <error_code> will be one of the following:
             * INVALID_BRANCH : This is returned on the "get_content" action, where the branch that you are trying to get from does not exist.
 			* ACCOUNT_EXISTS : This is returned on the "create_user" action, when the user that is being created already exists.
-			* OK : This code is returned on the "create_user" and "validate_user" branches when everything is fine.
-            * INVALID_PARAMS : This is returned on the "create_user" and "validate_user" branches when the params are not valid.
+			* OK : This code is returned when everything is fine.
+            * INVALID_PARAMS : This is returned anytime the params are not valid.
             * FAILED : This code is returned when an unknown error occurs on any action.  See the data tree of the response fro more info.
-            * INVALID_USER : This is returned on the "validate_user" action where the requested username and password do not match.
+            * INVALID_USER : This is returned on the "validate_user" and "set_user_info" actions when the requested username and password do not match.

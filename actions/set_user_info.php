@@ -1,7 +1,7 @@
 <?php
 if ($email && $password && $content) {
 
-//First, get the content
+    //First, get the content
     $sql = "SELECT content FROM members WHERE email='" . mysqli_real_escape_string($conn, $email) . "' AND userPassword='" . mysqli_real_escape_string($conn, $password) . "';";
     $result = $conn->query($sql);
 
@@ -17,19 +17,13 @@ if ($email && $password && $content) {
         $sql = "UPDATE members SET content='" . mysqli_real_escape_string($conn, $contentWithMain) . "' WHERE email='" . mysqli_real_escape_string($conn, $email) . "' AND userPassword='" . mysqli_real_escape_string($conn, $password) . "';";
 
         if ($conn->query($sql) === true) {
-            $response = array(true);
+            responseBuilder(false, "Set the user info successfully.", "OK");
         } else {
-            $obj->error = true;
-            $obj->message = "Error updating record: " . $conn->error;
-            $response = $obj;
+            responseBuilder(true, "Error updating record: " . $conn->error, "FAILED");
         }
     } else {
-        $obj->error = true;
-        $obj->message = "The password/email is not valid";
-        $response = $obj;
+        responseBuilder(true, "The password/email is not valid.", "INVALID_USER");
     }
 } else {
-    $obj->error = true;
-    $obj->message = "Invalid params";
-    $response = $obj;
+    responseBuilder(true, "Invalid params!", "INVALID_PARAMS");
 }

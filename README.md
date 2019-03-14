@@ -7,12 +7,16 @@ Create a database:
 ```sql
 CREATE DATABASE jikno_backend_api;
 ```
-In your mysql database create this table:
+In your mysql database create these two tables:
 ```sql
 CREATE TABLE members (
     email varchar(100),
     userPassword varchar(255),
     content longtext
+);
+CREATE TABLE apps_details (
+    branch_name VARCHAR(100),
+    content LONGTEXT 
 );
 ```
 

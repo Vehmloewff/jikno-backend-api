@@ -1,6 +1,6 @@
 <?php
 //Check for valid access
-require 'keys.php';
+require 'constants/keys.php';
 $key = $_GET['key'];
 $validRequest = false;
 $arrlength = count($validApiKeys);
@@ -27,7 +27,7 @@ $subject = $_POST["subject"];
 $response = false;
 
 // Create connection
-require 'connection-details.php';
+require 'constants/connection-details.php';
 $conn = new mysqli($sv, $us, $ps, $db);
 
 // Check connection
@@ -67,6 +67,10 @@ else if ($action == "get_content") {
 
 else if ($action == "email_user") {
     include 'actions/email_user.php';
+}
+
+else if ($action == "get_apps") {
+    include 'actions/get_apps.php';
 }
 
 // Catch the error

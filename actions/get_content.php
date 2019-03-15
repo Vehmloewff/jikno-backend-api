@@ -36,7 +36,7 @@ if ($password && $email && $branch_name) {
                 }
             }
             if (!$response) {
-                // Complete the neccecary actions
+                require 'actions/other/log_new_branch.php';
             }
         }
     } else {

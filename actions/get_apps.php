@@ -23,6 +23,7 @@ if ($email && $password) {
                 }
             }
 
+            $obj = new StdClass;
             $obj->name = $branch_data->name;
             $obj->icon = $path.$branch.$default_extension;
             $obj->active_by_user = $used_app;

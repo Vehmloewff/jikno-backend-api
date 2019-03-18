@@ -1,4 +1,4 @@
-#### [Chat on Discord](https://discord.gg/hXJQgvG) • [Submit an issue](https://github.com/Vehmloewff/jikno-backend-api/issues/new) • [API documentation](https://github.com/Vehmloewff/jikno-backend-api/blob/master/guide.txt)
+#### [Chat on Discord](https://discord.gg/hXJQgvG) • [Submit an issue](https://github.com/Vehmloewff/jikno-backend-api/issues/new) • [API documentation](https://github.com/Vehmloewff/jikno-backend-api#api)
 
 # Working with the code
 To get started go ahead and install [MAMP](https://www.mamp.info/en/), or, in your development environment provide a server that runs PHP, and a mysql server.

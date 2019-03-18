@@ -14,7 +14,7 @@ if ($email && $password) {
             $apps = json_decode($row["content"]);
         }
 
-
+        $returnArr = array();
         foreach ($apps as $branch => $branch_data) {
             $used_app = false;
             foreach($branch_data->users as $user) {
@@ -23,18 +23,17 @@ if ($email && $password) {
                 }
             }
 
-            $obj[$branch]->name = $branch_data->name;
-            $obj[$branch]->icon = $path.$branch.$default_extension;
-            if ($used_app) {
-                $obj[$branch]->active_by_user = true;
-            }else{
-                $obj[$branch]->active_by_user = false;
-            }
-            $obj[$branch]->description = $branch_data->description;
-            $obj[$branch]->popularity = count($branch_data->users) / $number_of_users;
+            $obj->name = $branch_data->name;
+            $obj->icon = $path.$branch.$default_extension;
+            $obj->active_by_user = $used_app;
+            $obj->description = $branch_data->description;
+            $obj->popularity = count($branch_data->users) / $number_of_users;
+            $obj->branch = $branch;
+
+            array_push($returnArr, $obj);
         }
 
-        responseBuilder(false, $obj, "OK");
+        responseBuilder(false, $returnArr, "OK");
 
 
 

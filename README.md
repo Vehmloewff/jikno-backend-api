@@ -28,14 +28,11 @@ Now, create a file called `index.html`.  Populate it with something like this:
     cache: "no-cache",
     credentials: "same-origin",
     headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
     },
     redirect: "follow",
     referrer: "no-referrer",
-    body: JSON.stringify({
-      email: "email@example.com",
-      password: "1234"
-    })
+    body: "email=test@jikno.com&password=12345678",
   })
   .then(res => res.json())
   .then(json => console.log(json))

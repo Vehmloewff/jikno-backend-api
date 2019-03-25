@@ -66,7 +66,7 @@ When you run this page it will create a new row in `members`.
 ## Request
 A basic request to the Jikno Api would look like this:
 ```
-https://www.jikno.com/api/api.php?key=API_KEY&action=ACTION
+https://www.api.jikno.com/?key=API_KEY&action=ACTION
 ```
 Where `API_KEY` is your api key, and `ACTION` is the [action](https://github.com/Vehmloewff/jikno-backend-api#Actions) you are using.
 

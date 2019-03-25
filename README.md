@@ -19,7 +19,7 @@ CREATE TABLE apps_details (
 );
 ```
 
-Now, create a file called `index.html`.  Populate it with something like this:
+Now, create a file called `test.html`.  Populate it with something like this:
 ```html
 <script>
   fetch('api.php?action=create_user&key=qjkiqewrjkaslf', {

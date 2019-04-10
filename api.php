@@ -65,12 +65,19 @@ else if ($action == "get_content") {
     include 'actions/get_content.php';
 }
 
+// email_user
 else if ($action == "email_user") {
     include 'actions/email_user.php';
 }
 
+// get_apps
 else if ($action == "get_apps") {
     include 'actions/get_apps.php';
+}
+
+// validate_email
+else if ($action == "validate_email") {
+	include 'actions/validate_email.php';
 }
 
 // Catch the error

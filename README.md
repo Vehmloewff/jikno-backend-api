@@ -1,7 +1,7 @@
 #### [Chat on Discord](https://discord.gg/hXJQgvG) • [Submit an issue](https://github.com/Vehmloewff/jikno-backend-api/issues/new) • [API documentation](https://github.com/Vehmloewff/jikno-backend-api#api)
 
 # Working with the code
-To get started go ahead and install [MAMP](https://www.mamp.info/en/), or, in your development environment provide a server that runs PHP, and a mysql server.
+To get started go ahead and install [MAMP](https://www.mamp.info/en/), or in your development environment provide a server that runs PHP and a mysql server.
 
 Create a database:
 ```sql
@@ -19,7 +19,7 @@ CREATE TABLE apps_details (
 );
 ```
 
-Now, create a file called `index.html`.  Populate it with something like this:
+Now, create a file called `test.html`.  Populate it with something like this:
 ```html
 <script>
   fetch('api.php?action=create_user&key=qjkiqewrjkaslf', {
@@ -44,7 +44,7 @@ When you run this page it will create a new row in `members`.
 # API
 - [Request](https://github.com/Vehmloewff/jikno-backend-api#Request)
 - [Response](https://github.com/Vehmloewff/jikno-backend-api#Response)
-- [Information Object](https://github.com/Vehmloewff/jikno-backend-api#InformationObject)
+- [InformationObject](https://github.com/Vehmloewff/jikno-backend-api#InformationObject)
 - [Actions](https://github.com/Vehmloewff/jikno-backend-api#Actions)
     - [`create_user`](https://github.com/Vehmloewff/jikno-backend-api#create_user)
     - [`validate_user`](https://github.com/Vehmloewff/jikno-backend-api#validate_user)
@@ -66,7 +66,7 @@ When you run this page it will create a new row in `members`.
 ## Request
 A basic request to the Jikno Api would look like this:
 ```
-https://www.jikno.com/api/api.php?key=API_KEY&action=ACTION
+https://www.api.jikno.com/?key=API_KEY&action=ACTION
 ```
 Where `API_KEY` is your api key, and `ACTION` is the [action](https://github.com/Vehmloewff/jikno-backend-api#Actions) you are using.
 
@@ -100,8 +100,8 @@ Here is an example:
     }
 }
 ```
-The Jikno manager has it's own branch, the to do list it's own, and so on.
-A new users InformationObject will look like this:
+The Jikno Manager has it's own branch, the To Do List it's own branch, and so on.
+A new users `InformationObject` will look like this:
 ```
 {
     user_info: {
@@ -110,7 +110,7 @@ A new users InformationObject will look like this:
 ```
 
 ## Actions
-The action is what you want to do with the api.
+The action is what you want to do with the API.
 
 ### create_user
 [Params](https://github.com/Vehmloewff/jikno-backend-api#Params):
@@ -118,9 +118,9 @@ The action is what you want to do with the api.
 - `password`
 - `content` (Optional)
 
-When the `content` param is specified that value will be the value of the `InformationObject`
+When the `content` parameter is specified, that value will be the value of the `InformationObject`
 
-Action: creates a new user.  This creates a new [InformationObject](https://github.com/Vehmloewff/jikno-backend-api#InformationObject).
+Action: Creates a new user.  This creates a new [InformationObject](https://github.com/Vehmloewff/jikno-backend-api#InformationObject).
 
 Return type: `string`.
 
@@ -150,7 +150,7 @@ Return type: `object`.
 
 Action: Sets the information stored in the `user_info` branch in the [InformationObject](https://github.com/Vehmloewff/jikno-backend-api#InformationObject) with the value of the `content` param.
 
-Return type: none.
+Return type: None.
 
 ### sub_content
 [Params](https://github.com/Vehmloewff/jikno-backend-api#Params):
@@ -161,7 +161,7 @@ Return type: none.
 
 Action: Sets the value of the the branch specified in the `branch_name` param.
 
-Return type: none.
+Return type: None.
 
 ### get_content
 [Params](https://github.com/Vehmloewff/jikno-backend-api#Params):
@@ -181,7 +181,7 @@ Return type: `content`.
 
 Action: Emails the email address in the `email` param, the content being the value of the `content` param.  Emails will be sent from the address `jiknobot@jikno.com`.
 
-Return type: none.
+Return type: None.
 
 ### get_apps
 [Params](https://github.com/Vehmloewff/jikno-backend-api#Params):
@@ -229,10 +229,10 @@ This is returned anytime (except on the `create_user` action) when the username 
 For additional information you can [contact us](https://discord.gg/hXJQgvG).
 
 ### Note
-I use [sequelpro](https://github.com/sequelpro/sequelpro) to manage and view the sql tables on my machine.
+I use [Sequelpro](https://github.com/sequelpro/sequelpro) to manage and view the SQL tables on my machine.
 
-### Rember:
-When you update a param, action, or response in the api, you must update `guide.txt`.
+### Remeber:
+When you update a param, action, or response in the API, you must update `README.md`.
 
 # License
 [MIT](https://opensource.org/licenses/MIT)

@@ -82,9 +82,7 @@ else if ($action == "validate_email") {
 
 // Catch the error
 else {
-    $obj->error = true;
-    $obj->message = "No valid action param specified";
-    $response = $obj;
+    responseBuilder(true, "A valid action was not specified", "FAILED");
 }
 
 // Validate User Function

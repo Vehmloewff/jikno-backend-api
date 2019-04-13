@@ -80,6 +80,11 @@ else if ($action == "validate_email") {
 	include 'actions/validate_email.php';
 }
 
+// chnage-values
+else if ($action == "change_values") {
+	include 'actions/change_values.php';
+}
+
 // Catch the error
 else {
     $obj->error = true;

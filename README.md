@@ -54,6 +54,7 @@ When you run this page it will create a new row in `members`.
     - [`get_content`](https://github.com/Vehmloewff/jikno-backend-api#get_content)
     - [`email_user`](https://github.com/Vehmloewff/jikno-backend-api#email_user)
     - [`get_apps`](https://github.com/Vehmloewff/jikno-backend-api#get_apps)
+	- [`change_values`](https://github.com/Vehmloewff/jikno-backend-api#change_values)
 - [Params](https://github.com/Vehmloewff/jikno-backend-api#Params)
 - [Error Codes](https://github.com/Vehmloewff/jikno-backend-api#Error-Codes)
     - [`INVALID_BRANCH`](https://github.com/Vehmloewff/jikno-backend-api#INVALID_BRANCH)
@@ -191,6 +192,15 @@ Return type: None.
 Action: Returns an array of all the Jikno apps.  This action is still in progress. (see [this issue](https://github.com/Vehmloewff/jikno-backend-api/issues/5))
 
 Return type: `array`.
+
+### change_values
+[Params](https://github.com/Vehmloewff/jikno-backend-api#Params):
+- `email`
+- `password`
+
+Action: Changes the email and password of a specific user.
+
+Return type: None.
 
 ## Params
 All of the params must be sent via `POST` headers.

@@ -11,7 +11,7 @@ if ($email && $password && $content && $branch_name) {
         $valid_apps = json_decode($row["content"]);
     }
     $valid_branch = false;
-    foreach($valid_apps as $branch) {
+    foreach($valid_apps as $branch => $data) {
         if ($branch_name == $branch) {
             $valid_branch = true;
         }

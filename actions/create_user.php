@@ -1,8 +1,14 @@
 <?php
 if ($password && $email) {
     if (!$content) {
-        $content["user_info"] = new StdClass;
-        $content = json_encode($content);
+		$content["user_info"] = new StdClass;
+		$content->user_info->notifications = array();
+
+		if ($notification) {
+			array_push($content->user_info->notifications, json_decode($notification));
+		}
+
+		$content = json_encode($content);
     }
 
     $sql = "SELECT email FROM members WHERE email='" . mysqli_real_escape_string($conn, $email) . "'";

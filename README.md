@@ -106,6 +106,7 @@ A new users `InformationObject` will look like this:
 ```
 {
     user_info: {
+		notifications: []
     }
 }
 ```
@@ -118,8 +119,11 @@ The action is what you want to do with the API.
 - `email`
 - `password`
 - `content` (Optional)
+- `notification` (Optional)
 
 When the `content` parameter is specified, that value will be the value of the `InformationObject`
+
+When the `notification` parameter is specified, it will become that users first notification.
 
 Action: Creates a new user.  This creates a new [InformationObject](https://github.com/Vehmloewff/jikno-backend-api#InformationObject).
 
@@ -208,10 +212,14 @@ These are all of the params the API will accept:
 - email: `string`
 - password: `string`
 
-- content: `object | array`
+- content: `string`*
 
 - branch_name: `string`
 - subject: `string`
+
+- notification: `string`*
+
+\* Indicates that JSON is commonly used for that param.
 
 
 ## Error Codes

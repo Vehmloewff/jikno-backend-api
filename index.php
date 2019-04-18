@@ -23,6 +23,7 @@ $content = $_POST['content'];
 $branch_name = $_POST['branch_name'];
 
 $subject = $_POST["subject"];
+$notification = $_POST["notification"];
 
 $response = false;
 

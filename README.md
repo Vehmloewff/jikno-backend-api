@@ -206,6 +206,21 @@ Action: Changes the email and password of a specific user.
 
 Return type: None.
 
+### new_visit
+[Params](https://github.com/Vehmloewff/jikno-backend-api#Params):
+- `tag`
+
+Action: Loggs a new visit
+
+Return type: None.
+
+### get_visits
+[Params](https://github.com/Vehmloewff/jikno-backend-api#Params):
+
+Action: Gets an array of all the visits
+
+Return type: `array`.
+
 ## Params
 All of the params must be sent via `POST` headers.
 These are all of the params the API will accept:

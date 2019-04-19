@@ -21,6 +21,7 @@ $email = $_POST["email"];
 
 $content = $_POST['content'];
 $branch_name = $_POST['branch_name'];
+$url = $_POST["url"];
 
 $subject = $_POST["subject"];
 $notification = $_POST["notification"];
@@ -81,9 +82,19 @@ else if ($action == "validate_email") {
 	include 'actions/validate_email.php';
 }
 
-// chnage-values
+// change-values
 else if ($action == "change_values") {
 	include 'actions/change_values.php';
+}
+
+// new_vist
+else if ($action == "new_visit") {
+	include 'actions/new_visit.php';
+}
+
+// get_visits
+else if ($action == "get_visits") {
+	include 'actions/get_visits.php';
 }
 
 // Catch the error

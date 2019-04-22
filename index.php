@@ -97,6 +97,11 @@ else if ($action == "get_visits") {
 	include 'actions/get_visits.php';
 }
 
+// get_visits
+else if ($action == "upload_file") {
+	include 'actions/upload_file.php';
+}
+
 // Catch the error
 else {
     responseBuilder(true, "A valid action was not specified", "FAILED");

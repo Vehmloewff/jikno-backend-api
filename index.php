@@ -18,6 +18,7 @@ $action = $_GET["action"];
 $username = $_POST["username"];
 $password = $_POST["password"];
 $email = $_POST["email"];
+$oldEmail = $_POST["oldEmail"];
 
 $content = $_POST['content'];
 $branch_name = $_POST['branch_name'];

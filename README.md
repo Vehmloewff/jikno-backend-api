@@ -201,6 +201,7 @@ Return type: `array`.
 [Params](https://github.com/Vehmloewff/jikno-backend-api#Params):
 - `email`
 - `password`
+- `oldEmail`
 
 Action: Changes the email and password of a specific user.
 
@@ -226,6 +227,7 @@ All of the params must be sent via `POST` headers.
 These are all of the params the API will accept:
 - email: `string`
 - password: `string`
+- oldEmail: `string`
 
 - content: `string`*
 

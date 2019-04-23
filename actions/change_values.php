@@ -1,5 +1,9 @@
 <?php
-if ($oldEmail && $email && $password) {
+if ($email && $password) {
+
+	if (!$oldEmail) {
+		$oldEmail = $email;
+	}
 
     $sql = "UPDATE members SET email='" . mysqli_real_escape_string($conn, $email) . "', userPassword='" . mysqli_real_escape_string($conn, $password) . "' WHERE email='" . mysqli_real_escape_string($conn, $oldEmail) . "';";
     if ($conn->query($sql) === true) {
